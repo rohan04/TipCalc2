@@ -33,12 +33,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tipLabel.text = "$0.00";
-        totalLabel.text = "$0.00";
-        shareLabel.text = "$0.00";
+        tipLabel.text = "0.00";
+        totalLabel.text = "0.00";
+        shareLabel.text = "0.00";
         peopleDiv.hidden = true;
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
     
     @IBAction func onEditingChanged(sender: AnyObject) {
         
-        var tipPercentages = [0.18, 0.2, 0.22]
+        var tipPercentages = [0.18, 0.2, 0.22];
         
         var tipPercent = tipPercentages[tipControl.selectedSegmentIndex];
         
@@ -61,8 +62,6 @@ class ViewController: UIViewController {
         
         total  = billAmount+tip;
         
-        
-       
         if(total > 0){
             
             peopleDiv.hidden = false;
@@ -70,18 +69,24 @@ class ViewController: UIViewController {
             var stepperVal = stepperControl.value;
             var individualShare = total/stepperVal;
             noOfPeople.text = "\(stepperVal)";
-            shareLabel.text = "$\(individualShare)";
+            shareLabel.text = "\(currencyStringFromNumber(individualShare))";
         }else{
             peopleDiv.hidden = true;
         }
         
-        tipLabel.text = "$\(tip)";
-        totalLabel.text = "$\(total)";
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        tipLabel.text = "\(currencyStringFromNumber(tip))"
+        totalLabel.text = "\(currencyStringFromNumber(total))"
+        
     
     }
     
+    // Reference stackOverflow
+    func currencyStringFromNumber(number: Double) -> String {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        formatter.currencyCode = NSLocale.currentLocale().displayNameForKey(NSLocaleCurrencySymbol, value: NSLocaleCurrencyCode)
+        return formatter.stringFromNumber(number)
+    }
 }
 
