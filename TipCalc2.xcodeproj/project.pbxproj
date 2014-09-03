@@ -12,6 +12,9 @@
 		83A7063A19AD76FD00BEC7D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A7063819AD76FD00BEC7D7 /* Main.storyboard */; };
 		83A7063C19AD76FD00BEC7D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A7063B19AD76FD00BEC7D7 /* Images.xcassets */; };
 		83A7064819AD76FD00BEC7D7 /* TipCalc2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7064719AD76FD00BEC7D7 /* TipCalc2Tests.swift */; };
+		83A7065A19B6918E00BEC7D7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7065919B6918E00BEC7D7 /* SettingsViewController.swift */; };
+		83A7065D19B69A9300BEC7D7 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7065C19B69A9300BEC7D7 /* NavigationViewController.swift */; };
+		83A7065F19B69EE600BEC7D7 /* SettingsNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7065E19B69EE600BEC7D7 /* SettingsNavigationItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		83A7064119AD76FD00BEC7D7 /* TipCalc2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalc2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A7064619AD76FD00BEC7D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83A7064719AD76FD00BEC7D7 /* TipCalc2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalc2Tests.swift; sourceTree = "<group>"; };
+		83A7065919B6918E00BEC7D7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
+		83A7065C19B69A9300BEC7D7 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		83A7065E19B69EE600BEC7D7 /* SettingsNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNavigationItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,8 @@
 		83A7063119AD76FD00BEC7D7 /* TipCalc2 */ = {
 			isa = PBXGroup;
 			children = (
+				83A7066019B69EED00BEC7D7 /* Item */,
+				83A7065B19B6919900BEC7D7 /* ViewController */,
 				83A7063419AD76FD00BEC7D7 /* AppDelegate.swift */,
 				83A7063619AD76FD00BEC7D7 /* ViewController.swift */,
 				83A7063819AD76FD00BEC7D7 /* Main.storyboard */,
@@ -107,6 +115,23 @@
 				83A7064619AD76FD00BEC7D7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83A7065B19B6919900BEC7D7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83A7065919B6918E00BEC7D7 /* SettingsViewController.swift */,
+				83A7065C19B69A9300BEC7D7 /* NavigationViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		83A7066019B69EED00BEC7D7 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				83A7065E19B69EE600BEC7D7 /* SettingsNavigationItem.swift */,
+			);
+			name = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,8 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A7065D19B69A9300BEC7D7 /* NavigationViewController.swift in Sources */,
+				83A7065F19B69EE600BEC7D7 /* SettingsNavigationItem.swift in Sources */,
 				83A7063719AD76FD00BEC7D7 /* ViewController.swift in Sources */,
 				83A7063519AD76FD00BEC7D7 /* AppDelegate.swift in Sources */,
+				83A7065A19B6918E00BEC7D7 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

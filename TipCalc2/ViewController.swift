@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     
     @IBOutlet weak var totalLabel: UILabel!
-    
+
     @IBOutlet weak var stepperControl: UIStepper!
     
     @IBOutlet weak var shareLabel: UILabel!
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var peopleDiv: UIView!
     
     var total=0.00;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,11 @@ class ViewController: UIViewController {
     
     @IBAction func onEditingChanged(sender: AnyObject) {
         
-        var tipPercentages = [0.18, 0.2, 0.22];
+        var settingController = SettingsViewController()
+        
+        var sliderValue = (settingController.returnSliderVal() as NSString).doubleValue
+        
+        var tipPercentages = [sliderValue/4, sliderValue/2.5, sliderValue/1.5];
         
         var tipPercent = tipPercentages[tipControl.selectedSegmentIndex];
         
