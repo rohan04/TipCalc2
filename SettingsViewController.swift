@@ -10,9 +10,13 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var tipPercentageLabel: UILabel!
     
-    @IBOutlet weak var sliderControl: UISlider!
+    @IBOutlet weak var settingsSegControl: UISegmentedControl!
+    
+    @IBOutlet weak var taxesLabel: UILabel!
+    
+    @IBOutlet weak var taxesSliderControl: UISlider!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +34,35 @@ class SettingsViewController: UIViewController {
     @IBAction func onBackClick(sender: AnyObject) {
         
         dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
-    @IBAction func onSliderChanged(sender: AnyObject) {
+    @IBAction func onDefaultValChanged(sender: AnyObject) {
         
-        var sliderVal = sliderControl.value;
-        tipPercentageLabel.text = "\(sliderVal)";
         
     }
+    
 
-    func returnSliderVal() ->String{
-        return tipPercentageLabel.text;
+    @IBAction func onSliderChanged(sender: AnyObject) {
+        var val = NSString(format:"%.2f", taxesSliderControl.value)
+        
+        taxesLabel.text = "\(val)%";
+    }
+    
+    func returnTaxesSliderPercent() ->Float{
+        if(taxesSliderControl != nil){
+            return taxesSliderControl.value;
+        }else{
+            return 0;
+        }
+    }
+    
+    func returnSegmentIndex() ->Int{
+        if(settingsSegControl != nil){
+            return settingsSegControl.selectedSegmentIndex;
+        }else{
+            return 0;
+        }
         
     }
     /*

@@ -28,16 +28,39 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var peopleDiv: UIView!
     
-    var total=0.00;
+    @IBOutlet weak var taxPercentLabel: UILabel!
     
+    
+    
+    var total=0.00;
+    var taxSliderValue = 0.00;
+    var defaultTipIndex = 0;
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tipLabel.text = "0.00";
         totalLabel.text = "0.00";
         shareLabel.text = "0.00";
+    
         peopleDiv.hidden = true;
+        
+        
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        println("Inside ViewDidLoad")
+        var settingController = SettingsViewController()
+        
+        taxSliderValue = (settingController.returnTaxesSliderPercent() as NSNumber).doubleValue
+        
+        println("Tax Slider Value : \(taxSliderValue)")
+        
+        defaultTipIndex = settingController.returnSegmentIndex()
+        tipControl.selectedSegmentIndex = defaultTipIndex
+        
     }
 
     
@@ -53,11 +76,9 @@ class ViewController: UIViewController {
     
     @IBAction func onEditingChanged(sender: AnyObject) {
         
-        var settingController = SettingsViewController()
+       
         
-        var sliderValue = (settingController.returnSliderVal() as NSString).doubleValue
-        
-        var tipPercentages = [sliderValue/4, sliderValue/2.5, sliderValue/1.5];
+        var tipPercentages = [0.18, 0.20, 0.22];
         
         var tipPercent = tipPercentages[tipControl.selectedSegmentIndex];
         
@@ -65,7 +86,9 @@ class ViewController: UIViewController {
         
         var tip = billAmount*tipPercent;
         
-        total  = billAmount+tip;
+        var taxes = billAmount*taxSliderValue*0.01
+        
+        total  = billAmount+tip+taxes;
         
         if(total > 0){
             
@@ -82,7 +105,7 @@ class ViewController: UIViewController {
         
         tipLabel.text = "\(currencyStringFromNumber(tip))"
         totalLabel.text = "\(currencyStringFromNumber(total))"
-        
+        taxPercentLabel.text = NSString(format:"%.2f", taxSliderValue)+"%"
     
     }
     
