@@ -20,6 +20,20 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(NSUserDefaults.standardUserDefaults().objectForKey("taxSliderVal") != nil){
+           var taxSliderValue = (NSUserDefaults.standardUserDefaults().floatForKey("taxSliderVal") as NSNumber).doubleValue
+            taxesLabel.text = NSString(format:"%.2f", taxSliderValue)+"%"
+            taxesSliderControl.value = NSUserDefaults.standardUserDefaults().floatForKey("taxSliderVal")
+            
+        }
+        
+        if(NSUserDefaults.standardUserDefaults().objectForKey("settingSegIndex") != nil){
+            var defaultTipIndex = (NSUserDefaults.standardUserDefaults().integerForKey("settingSegIndex") as NSNumber).integerValue
+            settingsSegControl.selectedSegmentIndex = defaultTipIndex
+            
+        }
+
 
         // Do any additional setup after loading the view.
     }
