@@ -200,6 +200,7 @@
                                 </segments>
                                 <connections>
                                     <action selector="onDefaultValChanged:" destination="LRE-3j-Vlg" eventType="valueChanged" id="aEU-O0-w0o"/>
+                                    <action selector="onSegmentUIChanged:" destination="LRE-3j-Vlg" eventType="valueChanged" id="KMx-Hf-oWu"/>
                                 </connections>
                             </segmentedControl>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="20" id="fXx-N3-WUe">

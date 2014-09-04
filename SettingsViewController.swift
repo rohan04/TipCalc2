@@ -39,7 +39,6 @@ class SettingsViewController: UIViewController {
     
     @IBAction func onDefaultValChanged(sender: AnyObject) {
         
-        
     }
     
 
@@ -47,9 +46,22 @@ class SettingsViewController: UIViewController {
         var val = NSString(format:"%.2f", taxesSliderControl.value)
         
         taxesLabel.text = "\(val)%";
+        //NSUserDefaults.setValue(val, forKey: "taxSliderVal")
+        NSUserDefaults.standardUserDefaults().setFloat(taxesSliderControl.value, forKey: "taxSliderVal")
+        
+
     }
     
-    func returnTaxesSliderPercent() ->Float{
+    @IBAction func onSegmentUIChanged(sender: AnyObject) {
+        
+        //NSUserDefaults.setValue(settingsSegControl.selectedSegmentIndex, forKey: "settingSegIndex")
+        
+        NSUserDefaults.standardUserDefaults().setInteger(settingsSegControl.selectedSegmentIndex, forKey: "settingSegIndex")
+    }
+    
+    
+    
+  /*  func returnTaxesSliderPercent() ->Float{
         if(taxesSliderControl != nil){
             return taxesSliderControl.value;
         }else{
@@ -64,7 +76,7 @@ class SettingsViewController: UIViewController {
             return 0;
         }
         
-    }
+    } */
     /*
     // MARK: - Navigation
 

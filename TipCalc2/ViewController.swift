@@ -51,18 +51,19 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        println("Inside ViewDidLoad")
-        var settingController = SettingsViewController()
         
-        taxSliderValue = (settingController.returnTaxesSliderPercent() as NSNumber).doubleValue
+        if(NSUserDefaults.standardUserDefaults().objectForKey("taxSliderVal") != nil){
+            taxSliderValue = (NSUserDefaults.standardUserDefaults().floatForKey("taxSliderVal") as NSNumber).doubleValue
+             taxPercentLabel.text = NSString(format:"%.2f", taxSliderValue)+"%"
+            
+        }
         
-        println("Tax Slider Value : \(taxSliderValue)")
-        
-        defaultTipIndex = settingController.returnSegmentIndex()
+        if(NSUserDefaults.standardUserDefaults().objectForKey("settingSegIndex") != nil){
+        defaultTipIndex = (NSUserDefaults.standardUserDefaults().integerForKey("settingSegIndex") as NSNumber).integerValue
         tipControl.selectedSegmentIndex = defaultTipIndex
         
+        }
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
